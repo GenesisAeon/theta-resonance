@@ -39,7 +39,7 @@ class SAVDuality:
             return 0.0
         loads = [max(graph.load(node, nb), 1e-12) for nb in nbs]
         total = sum(loads)
-        probs = [l / total for l in loads]
+        probs = [load / total for load in loads]
         return -sum(p * math.log(p) for p in probs if p > 0)
 
     def network_lagrangian(

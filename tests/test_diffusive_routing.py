@@ -8,14 +8,12 @@ import pytest
 
 from diffusive_routing import DiffusiveRouting
 from diffusive_routing.constants import GAMMA_ROUTING, H_STAR_ROUTING, SIGMA
-from diffusive_routing.crep_network import NetworkCREPEvaluator
 from diffusive_routing.entropy_field import EntropicResistanceField
 from diffusive_routing.network_graph import NetworkGraph
 from diffusive_routing.packet import Packet
 from diffusive_routing.reaction_diffusion import ReactionDiffusionField
 from diffusive_routing.router import DiffusiveRouter
 from diffusive_routing.sa_sv_duality import SAVDuality
-
 
 # ── Diamond contract ──────────────────────────────────────────────────────────
 

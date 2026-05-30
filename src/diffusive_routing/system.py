@@ -344,7 +344,7 @@ class DiffusiveRouting:
         if not hops or not sp_hops:
             return 0.5
         n = min(len(hops), len(sp_hops))
-        ok = sum(1 for h, sp in zip(hops[:n], sp_hops[:n]) if h <= sp + 1)
+        ok = sum(1 for h, sp in zip(hops[:n], sp_hops[:n], strict=False) if h <= sp + 1)
         return ok / n
 
     @staticmethod
@@ -354,7 +354,7 @@ class DiffusiveRouting:
         n = min(len(hops), len(sp_hops))
         if n == 0:
             return 1.05
-        mean_h  = sum(hops[:n])  / n
+        mean_h = sum(hops[:n]) / n
         mean_sp = sum(sp_hops[:n]) / n
         if mean_sp < 1e-9:
             return 1.05
