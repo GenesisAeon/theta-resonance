@@ -1,22 +1,25 @@
-# theta-resonance + epi-sigillin + hikari-ledger
+# theta-resonance + epi-sigillin + hikari-ledger + diffusive-routing
 
 [![Package 27](https://img.shields.io/badge/GenesisAeon-Package%2027-blueviolet)](https://github.com/GenesisAeon/theta-resonance)
 [![Package 28](https://img.shields.io/badge/GenesisAeon-Package%2028-purple)](https://github.com/GenesisAeon/theta-resonance)
 [![Package 29](https://img.shields.io/badge/GenesisAeon-Package%2029-orange)](https://github.com/GenesisAeon/theta-resonance)
+[![Package 30](https://img.shields.io/badge/GenesisAeon-Package%2030-teal)](https://github.com/GenesisAeon/theta-resonance)
 [![Whitepaper](https://img.shields.io/badge/Whitepaper-10.5281%2Fzenodo.19645351-blue)](https://doi.org/10.5281/zenodo.19645351)
 [![Reference P27](https://img.shields.io/badge/Neuron%202025-Hengen%20%26%20Shew-green)](https://doi.org/10.1016/j.neuron.2025.05.020)
 [![Reference P28](https://img.shields.io/badge/NatRevMCB%202019-Greenberg%20%26%20Bourc'his-green)](https://doi.org/10.1038/s41580-019-0160-9)
+[![Reference P30](https://img.shields.io/badge/Turing%201952-Reaction--Diffusion-green)](https://doi.org/10.1098/rstb.1952.0012)
 [![PyPI](https://img.shields.io/pypi/v/theta-resonance)](https://pypi.org/project/theta-resonance/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![CI](https://github.com/GenesisAeon/theta-resonance/actions/workflows/ci.yml/badge.svg)](https://github.com/GenesisAeon/theta-resonance/actions/workflows/ci.yml)
 
-**GenesisAeon Entropy Atlas — Packages 27, 28 & 29**
+**GenesisAeon Entropy Atlas — Packages 27, 28, 29 & 30**
 
 | Package | Module | Domain | Γ |
 |---|---|---|---|
 | **P27** | `theta_resonance` | Brain oscillation bands as CREP modulators | 0.251 (theta) |
 | **P28** | `epi_sigillin` | Epigenetic runtime parameter mutation | dynamic — f(S_total) |
 | **P29** | `hikari_ledger` | Proof-of-Resonance distributed consensus | 0.367 |
+| **P30** | `diffusive_routing` | Entropy-minimizing network routing | 0.443 |
 
 ---
 
@@ -155,14 +158,84 @@ accepted = ledger.validate_block(
 | BTW Sandpile | P22 | 0.296 | Classical SOC |
 | **epi-sigillin** | **P28** | **dynamic** | **Meta-level CREP modulator** |
 | **Proof-of-Resonance** | **P29** | **0.367** | **Distributed consensus** |
+| **Diffusive Routing** | **P30** | **0.443** | **Network infrastructure** |
 | ERA5 Arctic Ice | Core | 0.920 | Near-saturated |
+
+---
+
+## Package 30 — diffusive-routing
+
+Implements an **entropy-minimizing network routing protocol** where data packets
+flow along paths of minimum entropic resistance — analogous to how gases flow
+into low-pressure regions. The resistance field evolves via Turing reaction-diffusion;
+the S_A/S_V duality provides the variational routing objective.
+
+> **Gemini's insight:** *"Datenpakete fließen dynamisch wie ein Gas in Bereiche mit
+> geringem entropischen Widerstand — die Theorie der S_A/S_V Entropie-Dualität
+> auf Netzwerk-Infrastruktur."*
+
+> **Γ\_routing ≈ 0.443** — η = 0.75 (optimal throughput), σ = 2.2
+
+```python
+from diffusive_routing import DiffusiveRouting
+
+dr = DiffusiveRouting(n_nodes=20, seed=42)
+result = dr.run_cycle(duration_seconds=60.0, n_packets=10000)
+
+print(result["crep"])
+# {'C': 0.712, 'R': 0.881, 'E': 0.743, 'P': 0.661, 'Gamma': 0.441}
+
+print(result["mean_throughput"])      # e.g. 0.964
+print(result["load_gini"])            # e.g. 0.12  (even load distribution)
+print(result["network_lagrangian"])   # L_net = S_V(dst) - S_A(path)
+
+# Route a single packet and inspect the path
+info = dr.route_packet(src=0, dst=15)
+print(info["path"])     # [0, 3, 11, 15]
+print(info["latency"])  # entropic resistance along path
+
+# Inspect the resistance field
+dr.visualise_resistance_field()
+```
+
+### Entropic Resistance Field
+
+Each link (i, j) carries a resistance that evolves dynamically:
+
+```
+ρ_ij(t) = baseline / (1 + Γ_ij · utilisation_coherence)
+```
+
+The field then diffuses via Turing reaction-diffusion:
+
+```
+dρ_ij/dt = D · ∇²ρ_ij − k · Γ_ij · ρ_ij + f(load_ij)
+```
+
+Packets route along `argmin Σ ρ_ij` — minimum total entropic resistance.
+
+### S_A / S_V Entropy Duality
+
+| Symbol | Meaning | Role |
+|---|---|---|
+| S_A(path) | Action entropy = Σ ρ_ij along path | Routing cost — minimised |
+| S_V(node) | Volume entropy = H(outgoing load distribution) | Balance — maximised |
+| L_net | Network Lagrangian = S_V(dst) − S_A | Unified routing objective |
+
+### Routing vs. Classical Protocols
+
+| Protocol | Adapts to load | Entropic field | S_A/S_V duality | CREP integration |
+|---|---|---|---|---|
+| OSPF (static) | No | None | None | None |
+| ECMP | Partial | None | None | None |
+| **Diffusive Routing** | **Yes (100ms)** | **Turing RD** | **Native** | **Full** |
 
 ---
 
 ## Install
 
 ```bash
-pip install theta-resonance          # packages 27, 28, 29
+pip install theta-resonance          # packages 27, 28, 29, 30
 # with MNE-Python for real EDF data:
 pip install "theta-resonance[mne]"
 ```
@@ -201,6 +274,16 @@ ledger.to_zenodo_record()      # → dict
 ledger.validate_block(data, node_crep_states)  # → bool
 ledger.mint_hikari(node_id)    # → float (Hikari earned)
 ledger.network_crep_mean()     # → float
+
+# Package 30
+dr = DiffusiveRouting()
+dr.run_cycle()                     # → dict
+dr.get_crep_state()                # → {C, R, E, P, Gamma}
+dr.get_utac_state()                # → {H, dH_dt, H_star, K_eff}
+dr.get_phase_events()              # → list (congestion collapses, reroutes)
+dr.to_zenodo_record()              # → dict
+dr.route_packet(src, dst)          # → dict (path, latency, delivered)
+dr.visualise_resistance_field()    # print resistance table
 ```
 
 ## Repository Structure
@@ -241,6 +324,17 @@ theta-resonance/
 │       ├── hikari_currency.py     # HikariCurrencyMinter
 │       ├── benchmark.py
 │       └── constants.py
+│   └── diffusive_routing/         # Package 30
+│       ├── system.py              # DiffusiveRouting — Diamond interface
+│       ├── network_graph.py       # NetworkGraph (ring + Erdős–Rényi topology)
+│       ├── entropy_field.py       # EntropicResistanceField (ρ_ij computation)
+│       ├── packet.py              # Packet with CREP metadata
+│       ├── router.py              # DiffusiveRouter (Dijkstra on ρ_ij)
+│       ├── crep_network.py        # Per-link + aggregate CREP evaluation
+│       ├── reaction_diffusion.py  # Turing RD field evolution
+│       ├── sa_sv_duality.py       # S_A / S_V entropy duality
+│       ├── benchmark.py
+│       └── constants.py
 ├── src/diamond_setup/             # Template engine for new repos
 │   └── templates/
 │       ├── minimal.py             # (includes AGENT.md auto-copy)
@@ -276,6 +370,15 @@ Castro, M. & Liskov, B. (1999). Practical Byzantine Fault Tolerance.
 Gemini (2026). GenesisAeon Assessment — Hikari Currency & Proof-of-Resonance Concept.
 *MOR Research Collective internal assessment.*
 
+**Package 30:**
+Turing, A.M. (1952). The chemical basis of morphogenesis.
+*Philosophical Transactions of the Royal Society B* 237(641), 37–72. [DOI: 10.1098/rstb.1952.0012](https://doi.org/10.1098/rstb.1952.0012)
+
+Bianconi, G. (2021). *Higher-Order Networks*. Cambridge University Press.
+
+Gemini (2026). GenesisAeon Assessment — Diffusive Routing & S_A/S_V Entropy Duality Concept.
+*MOR Research Collective internal assessment.*
+
 ---
 
 ## Citation
@@ -283,9 +386,9 @@ Gemini (2026). GenesisAeon Assessment — Hikari Currency & Proof-of-Resonance C
 ```bibtex
 @software{Roemer2026_theta_epi,
   author    = {Römer, Johann},
-  title     = {{theta-resonance + epi-sigillin + hikari-ledger: GenesisAeon Packages 27--29}},
+  title     = {{theta-resonance + epi-sigillin + hikari-ledger + diffusive-routing: GenesisAeon Packages 27--30}},
   year      = {2026},
-  version   = {0.3.0},
+  version   = {0.4.0},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.19645351},
   url       = {https://doi.org/10.5281/zenodo.19645351}

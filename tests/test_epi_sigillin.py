@@ -10,7 +10,7 @@ from epi_sigillin.yaml_mutator import RuntimeYAMLMutator
 
 def test_version():
     import epi_sigillin
-    assert epi_sigillin.__version__ == "0.3.0"
+    assert epi_sigillin.__version__ == "0.4.0"
 
 
 def test_diamond_contract():

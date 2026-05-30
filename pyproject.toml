@@ -1,7 +1,7 @@
 [project]
 name = "theta-resonance"
-version = "0.3.0"
-description = "GenesisAeon Packages 27–29 — Brain Oscillation Bands (theta-resonance), Epigenetic Runtime Parameter Mutation (epi-sigillin) & Proof-of-Resonance Distributed Consensus (hikari-ledger)"
+version = "0.4.0"
+description = "GenesisAeon Packages 27–30 — Brain Oscillation Bands (theta-resonance), Epigenetic Runtime Parameter Mutation (epi-sigillin), Proof-of-Resonance Distributed Consensus (hikari-ledger) & Entropy-Minimizing Network Routing (diffusive-routing)"
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "Johann Römer", email = "joberoemer@gmail.com" }]
@@ -27,6 +27,12 @@ keywords = [
     "Byzantine fault tolerance",
     "Hikari currency",
     "hikari-ledger",
+    "diffusive routing",
+    "entropy minimization",
+    "entropic resistance",
+    "reaction-diffusion",
+    "network routing",
+    "information geometry",
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -64,7 +70,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/theta_resonance", "src/epi_sigillin", "src/hikari_ledger"]
+packages = ["src/theta_resonance", "src/epi_sigillin", "src/hikari_ledger", "src/diffusive_routing"]
 
 [tool.ruff]
 line-length = 100
@@ -78,7 +84,7 @@ select = ["E", "F", "B", "I", "W", "UP", "C4", "SIM"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts   = "--cov=theta_resonance --cov=epi_sigillin --cov=hikari_ledger --cov-report=term-missing -v"
+addopts   = "--cov=theta_resonance --cov=epi_sigillin --cov=hikari_ledger --cov=diffusive_routing --cov-report=term-missing -v"
 
 [tool.coverage.run]
 source = ["src"]
