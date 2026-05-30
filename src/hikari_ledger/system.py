@@ -293,7 +293,7 @@ class HikariLedger:
             for n in node_crep_states
             if n.get("Gamma", 0.0) > 0
         )
-        return weighted_yes > H_STAR_BFT
+        return bool(weighted_yes > H_STAR_BFT)
 
     def mint_hikari(self, validator_id: str) -> float:
         node = next((n for n in self._net.nodes if n.node_id == validator_id), None)

@@ -34,9 +34,9 @@ class HikariCurrencyMinter:
             p = n.hikari_balance / total
             if p > 0:
                 s -= p * math.log(p + 1e-12)
-        # Normalise to [0, 1] via max possible entropy = log(n)
-        n = max(len(nodes), 1)
-        max_s = math.log(n + 1e-12)
+        # Normalise to [0, 1] via max possible entropy = log(n_nodes)
+        n_nodes = max(len(nodes), 1)
+        max_s = math.log(n_nodes + 1e-12)
         return s / max_s if max_s > 0 else 0.0
 
     def mint(self, validator: ValidatorNode, all_nodes: list[ValidatorNode]) -> float:
