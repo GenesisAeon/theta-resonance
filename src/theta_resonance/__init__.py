@@ -2,6 +2,6 @@
 
 from .system import ThetaResonance
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "Johann Römer / MOR Research Collective"
 __all__ = ["ThetaResonance"]
