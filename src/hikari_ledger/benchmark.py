@@ -27,10 +27,7 @@ def run_benchmark(
         if key not in HIKARI_TARGETS:
             continue
         target, tol = HIKARI_TARGETS[key]
-        if tol is None:
-            pass_ = True
-        else:
-            pass_ = abs(float(measured) - float(target)) <= float(tol)  # type: ignore[arg-type]
+        pass_ = True if tol is None else abs(float(measured) - float(target)) <= float(tol)  # type: ignore[arg-type]
         if not pass_:
             all_pass = False
         results[key] = {

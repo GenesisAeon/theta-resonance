@@ -47,7 +47,7 @@ class ValidatorNode:
     # ── Factory ────────────────────────────────────────────────────────────────
 
     @classmethod
-    def from_seed(cls, seed: int, node_id: str | None = None) -> "ValidatorNode":
+    def from_seed(cls, seed: int, node_id: str | None = None) -> ValidatorNode:
         rng = random.Random(seed)
         c = 0.3 + 0.5 * rng.random()
         r = 0.3 + 0.5 * rng.random()

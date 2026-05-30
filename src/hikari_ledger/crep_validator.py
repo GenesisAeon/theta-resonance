@@ -16,7 +16,7 @@ class CREPValidator:
     normalised weights: w_i = Γ_i / Σ_j Γ_j
     """
 
-    def compute_weights(self, nodes: list["ValidatorNode"]) -> dict[str, float]:
+    def compute_weights(self, nodes: list[ValidatorNode]) -> dict[str, float]:
         eligible = [n for n in nodes if n.is_eligible()]
         total_gamma = sum(n.crep.Gamma for n in eligible)
         if total_gamma < 1e-12:
@@ -25,14 +25,12 @@ class CREPValidator:
             return {n.node_id: 1.0 / n_elig for n in eligible}
         return {n.node_id: n.crep.Gamma / total_gamma for n in eligible}
 
-    def validate_crep(self, node: "ValidatorNode", expected_gamma: float,
+    def validate_crep(self, node: ValidatorNode, expected_gamma: float,
                       tolerance: float = 0.15) -> bool:
         """Check that a node's CREP state is self-consistent and above minimum."""
         if not node.is_eligible():
             return False
-        if abs(node.crep.Gamma - expected_gamma) > tolerance:
-            return False
-        return True
+        return not abs(node.crep.Gamma - expected_gamma) > tolerance
 
     def gini_coefficient(self, weights: dict[str, float]) -> float:
         """Measure CREP weight distribution fairness (0 = perfect equality)."""
@@ -48,7 +46,7 @@ class CREPValidator:
         denom = n * sum(vals)
         return weighted_sum / denom if denom > 1e-12 else 0.0
 
-    def network_crep_mean(self, nodes: list["ValidatorNode"]) -> float:
+    def network_crep_mean(self, nodes: list[ValidatorNode]) -> float:
         eligible = [n for n in nodes if n.crep.Gamma >= MIN_CREP_TO_VALIDATE]
         if not eligible:
             return 0.0

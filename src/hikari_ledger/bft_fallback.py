@@ -16,14 +16,14 @@ class BFTFallback:
     below MIN_CREP_TO_VALIDATE — reverts to classical PBFT majority vote.
     """
 
-    def should_activate(self, nodes: list["ValidatorNode"]) -> bool:
+    def should_activate(self, nodes: list[ValidatorNode]) -> bool:
         eligible = [n for n in nodes if n.is_eligible()]
         if not eligible:
             return True
         mean_gamma = sum(n.crep.Gamma for n in eligible) / len(eligible)
         return mean_gamma < MIN_CREP_TO_VALIDATE
 
-    def equal_weights(self, nodes: list["ValidatorNode"]) -> dict[str, float]:
+    def equal_weights(self, nodes: list[ValidatorNode]) -> dict[str, float]:
         eligible = [n for n in nodes if n.is_eligible()]
         if not eligible:
             return {}
@@ -32,7 +32,7 @@ class BFTFallback:
 
     def consensus_result(
         self,
-        nodes: list["ValidatorNode"],
+        nodes: list[ValidatorNode],
         block_data: dict[str, Any],
         byzantine_fraction: float = 0.0,
     ) -> tuple[bool, float]:

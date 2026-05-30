@@ -27,7 +27,7 @@ class HikariCurrencyMinter:
         self._k = emission_rate
         self._total_supply: float = 0.0
 
-    def _supply_entropy(self, nodes: list["ValidatorNode"]) -> float:
+    def _supply_entropy(self, nodes: list[ValidatorNode]) -> float:
         total = max(sum(n.hikari_balance for n in nodes), 1e-9)
         s = 0.0
         for n in nodes:
@@ -39,7 +39,7 @@ class HikariCurrencyMinter:
         max_s = math.log(n + 1e-12)
         return s / max_s if max_s > 0 else 0.0
 
-    def mint(self, validator: "ValidatorNode", all_nodes: list["ValidatorNode"]) -> float:
+    def mint(self, validator: ValidatorNode, all_nodes: list[ValidatorNode]) -> float:
         s_h = self._supply_entropy(all_nodes)
         emission = self._k * validator.crep.Gamma * (1.0 - s_h)
         emission = max(0.0, emission)

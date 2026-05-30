@@ -27,8 +27,8 @@ class ProofOfResonanceConsensus:
         self._bft_threshold = H_STAR_BFT
 
     def select_validator(
-        self, nodes: list["ValidatorNode"], weights: dict[str, float]
-    ) -> "ValidatorNode":
+        self, nodes: list[ValidatorNode], weights: dict[str, float]
+    ) -> ValidatorNode:
         """Weighted-random selection of the block proposer."""
         eligible = [n for n in nodes if n.node_id in weights]
         if not eligible:
@@ -40,7 +40,7 @@ class ProofOfResonanceConsensus:
         self,
         block_index: int,
         block_data: dict[str, Any],
-        nodes: list["ValidatorNode"],
+        nodes: list[ValidatorNode],
         weights: dict[str, float],
         network_crep_mean: float,
     ) -> tuple[Block | None, bool, float]:

@@ -4,14 +4,11 @@ from __future__ import annotations
 
 import math
 
-import pytest
-
 from hikari_ledger import HikariLedger
 from hikari_ledger.constants import GAMMA_POR, H_STAR_BFT, SIGMA
 from hikari_ledger.crep_validator import CREPValidator
 from hikari_ledger.network import NetworkSimulator
 from hikari_ledger.node import ValidatorNode
-
 
 # ── Diamond contract ──────────────────────────────────────────────────────────
 

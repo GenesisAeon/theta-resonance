@@ -18,8 +18,6 @@ from .constants import (
     H_STAR_BFT,
     K_CONSENSUS,
     PACKAGE_NUMBER,
-    R_CONSENSUS,
-    REFERENCE,
     SIGMA,
     WHITEPAPER_DOI,
 )
@@ -165,7 +163,6 @@ class HikariLedger:
         # Finalise CREP state
         nodes_final = self._net.eligible_nodes()
         if nodes_final:
-            n = nodes_final[0]
             net_mean = self._validator.network_crep_mean(nodes_final)
             self._crep_state = {
                 "C": round(sum(nd.crep.C for nd in nodes_final) / len(nodes_final), 6),
