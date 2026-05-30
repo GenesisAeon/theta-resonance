@@ -2,6 +2,6 @@
 
 from .system import EpiSigillin
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 __author__ = "Johann Römer / MOR Research Collective"
 __all__ = ["EpiSigillin"]

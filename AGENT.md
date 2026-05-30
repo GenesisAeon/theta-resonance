@@ -10,7 +10,7 @@
 2. **README.md**
    - Aktualisiere Whitepaper-Badge auf aktuelle Version
    - Aktualisiere `@software` BibTeX-Eintrag (`version`, `publisher=Zenodo`, `DOI`)
-   - Package-Number-Badge ist Package 27
+   - Package-Number-Badges: Package 27, 28, 29, 30
 
 3. **Versionierung**
    - `pyproject.toml` und `src/theta_resonance/__init__.py` müssen synchron auf dieselbe Version sein

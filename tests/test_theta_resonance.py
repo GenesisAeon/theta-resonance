@@ -8,7 +8,7 @@ from theta_resonance.pac_analysis import modulation_index, synthetic_theta_gamma
 
 
 def test_version():
-    assert __version__ == "0.3.0"
+    assert __version__ == "0.4.0"
 
 
 def test_gamma_theta_universality():
