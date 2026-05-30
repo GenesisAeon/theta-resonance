@@ -1,37 +1,32 @@
-# Diamond Setup
+# theta-resonance
 
-**Universal Python project scaffold** — generate professional, CI-ready project skeletons in seconds.
+**Brain Oscillation Bands as CREP Modulators — GenesisAeon Package 27**
 
-No cookiecutter, no Jinja2, no magic. Just a clean CLI, sensible templates, and a validator that keeps your projects healthy.
+## Triple Universality
+
+> Γ_theta ≈ 0.251 = Γ_AMOC = Γ_neural_criticality
+
+The theta band (4–8 Hz, flow state) shares its CREP setpoint with ocean circulation
+(AMOC) and cortical criticality — all homeostatic systems converge at 50 % efficiency.
 
 ## Quickstart
 
-```bash
-pip install diamond-setup
-# or with uv:
-uv tool install diamond-setup
+```python
+from theta_resonance import ThetaResonance
+
+sys = ThetaResonance(seed=42)
+result = sys.run_cycle(duration_seconds=60.0)
+print(result["crep"]["Gamma"])  # ≈ 0.25
+print(result["flow_state"])     # True
+print(result["current_band"])   # 'theta'
 ```
 
-```bash
-diamond scaffold my-new-tool
-cd my-new-tool && uv sync --dev && uv run pytest
-```
+## Diamond-Template Contract
 
-## Why Diamond Setup?
-
-| Feature | diamond-setup | cookiecutter | copier |
-|---------|:---:|:---:|:---:|
-| Zero config needed | ✅ | ❌ | ❌ |
-| Built-in validator | ✅ | ❌ | ❌ |
-| Pure Python templates | ✅ | ❌ | ❌ |
-| `--dry-run` support | ✅ | ❌ | ✅ |
-| Extensible presets | ✅ | ✅ | ✅ |
-
-## Commands
-
-| Command | Description |
-|---------|-------------|
-| `diamond scaffold <name>` | Create a new project |
-| `diamond list-templates` | Show available templates |
-| `diamond validate [path]` | Check a project's health |
-| `diamond version` | Show version |
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `run_cycle(duration_seconds)` | dict | Run full simulation cycle |
+| `get_crep_state()` | dict | Current {C, R, E, P, Gamma} |
+| `get_utac_state()` | dict | Current {H, dH_dt, H_star, K_eff} |
+| `get_phase_events()` | list | Cognitive state transitions |
+| `to_zenodo_record()` | dict | Zenodo-ready metadata |

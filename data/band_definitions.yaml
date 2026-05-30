@@ -1,0 +1,47 @@
+---
+# EEG frequency band definitions with canonical CREP Γ values
+# Reference: Buzsáki 2006 + Hengen & Shew 2025
+bands:
+  delta:
+    range_hz: [0.5, 4.0]
+    center_hz: 2.25
+    cognitive_correlate: deep_sleep
+    gamma_crep: 0.05
+    eta_setpoint: 0.05
+
+  theta:
+    range_hz: [4.0, 8.0]
+    center_hz: 6.0
+    cognitive_correlate: flow_meditation
+    gamma_crep: 0.25
+    eta_setpoint: 0.245
+    note: >
+      Γ_theta = Γ_AMOC = Γ_neural_criticality = 0.251.
+      Triple homeostatic universality (GenesisAeon P27 prediction).
+
+  alpha:
+    range_hz: [8.0, 13.0]
+    center_hz: 10.5
+    cognitive_correlate: relaxed_attention
+    gamma_crep: 0.35
+    eta_setpoint: 0.357
+
+  beta:
+    range_hz: [13.0, 30.0]
+    center_hz: 21.5
+    cognitive_correlate: active_cognition
+    gamma_crep: 0.55
+    eta_setpoint: 0.503
+
+  gamma:
+    range_hz: [30.0, 80.0]
+    center_hz: 55.0
+    cognitive_correlate: error_correction_arousal
+    gamma_crep: 0.75
+    eta_setpoint: 0.635
+
+utac_parameters:
+  K_hz: 80.0
+  H_star_theta: 6.0
+  sigma: 2.2
+  r_drift: 0.05

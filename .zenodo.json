@@ -1,0 +1,57 @@
+{
+  "title": "theta-resonance: Brain Oscillation Bands as CREP Modulators (GenesisAeon Package 27)",
+  "description": "Package 27 of the GenesisAeon Entropy Atlas. Models EEG frequency bands (delta/theta/alpha/beta/gamma) as CREP modulation channels within the Unified Threshold Activation Criticality (UTAC) framework. Confirms Γ_theta ≈ 0.251 = Γ_AMOC = Γ_neural_criticality — the triple homeostatic universality prediction. Implements the Diamond-Template contract (run_cycle / get_crep_state / get_utac_state / get_phase_events / to_zenodo_record). Reference: Hengen & Shew (2025). Is criticality a unified setpoint of brain function? Neuron 113(16), 2582-2598. DOI: 10.1016/j.neuron.2025.05.020",
+  "version": "0.1.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Römer, Johann",
+      "affiliation": "MOR Research Collective"
+    }
+  ],
+  "keywords": [
+    "theta oscillations",
+    "gamma oscillations",
+    "CREP",
+    "UTAC",
+    "criticality",
+    "EEG",
+    "LFP",
+    "cognitive neuroscience",
+    "GenesisAeon",
+    "entropy atlas",
+    "flow state",
+    "neural criticality",
+    "phase-amplitude coupling",
+    "brain oscillations",
+    "self-organized criticality"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isDocumentedBy",
+      "identifier": "https://doi.org/10.5281/zenodo.19645351",
+      "resource_type": "publication-report",
+      "scheme": "url"
+    },
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://doi.org/10.1016/j.neuron.2025.05.020",
+      "resource_type": "publication-article",
+      "scheme": "url"
+    },
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://doi.org/10.3389/fncom.2026.1744991",
+      "resource_type": "publication-article",
+      "scheme": "url"
+    },
+    {
+      "relation": "isPartOf",
+      "identifier": "https://github.com/GenesisAeon",
+      "resource_type": "other",
+      "scheme": "url"
+    }
+  ]
+}
