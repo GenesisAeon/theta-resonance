@@ -7,7 +7,6 @@ from typing import Any
 
 import yaml
 
-
 DEFAULT_CREP_PARAMS: dict[str, Any] = {
     "crep": {"C": 0.5, "R": 0.5, "E": 0.5, "P": 0.5},
     "utac": {

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import math
 import random
 from dataclasses import dataclass
 from typing import Any
@@ -10,7 +9,6 @@ from typing import Any
 from .adaptation_memory import EpigeneticMemory
 from .benchmark import run_benchmark
 from .constants import (
-    CREP_COUPLING,
     ENTROPY_RATE,
     PACKAGE_NUMBER,
     REFERENCE_DOI,
@@ -113,9 +111,12 @@ class EpiSigillin:
                 k=self._s_max,
                 dt=1.0,
             )
-            self._crep_state = {k: v for k, v in epi_state.items() if k != "active_marks" and k != "methylation"}
+            self._crep_state = {
+                k: v for k, v in epi_state.items()
+                if k not in {"active_marks", "methylation"}
+            }
 
-            mutated_params = self._mutator.mutate(
+            self._mutator.mutate(
                 params={"crep": dict(self._crep_state), "utac": self._bridge.base_utac()},
                 entropy_level=entropy,
                 s_optimal=self._s_optimal,

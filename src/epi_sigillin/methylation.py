@@ -28,7 +28,7 @@ class CREPMethylationEngine:
         self._alpha = alpha
         self._delta = delta
         self._beta = beta
-        self._M: dict[str, float] = {c: 0.0 for c in CREP_COMPONENTS}
+        self._M: dict[str, float] = dict.fromkeys(CREP_COMPONENTS, 0.0)
 
     def step(
         self,
@@ -67,4 +67,4 @@ class CREPMethylationEngine:
                 self._M[comp] = float(state[key])
 
     def reset(self) -> None:
-        self._M = {c: 0.0 for c in CREP_COMPONENTS}
+        self._M = dict.fromkeys(CREP_COMPONENTS, 0.0)

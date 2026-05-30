@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
-
 from epi_sigillin import EpiSigillin
 from epi_sigillin.adaptation_memory import EpigeneticMemory
 from epi_sigillin.methylation import CREPMethylationEngine
@@ -17,7 +15,7 @@ def test_version():
 
 def test_diamond_contract():
     sys = EpiSigillin(seed=42)
-    result = sys.run_cycle(duration_cycles=20)
+    sys.run_cycle(duration_cycles=20)
 
     crep = sys.get_crep_state()
     utac = sys.get_utac_state()

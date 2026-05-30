@@ -21,7 +21,9 @@ class EpigeneticMemory:
         self._generations: list[dict[str, Any]] = []
         self._max_generations = max_generations
 
-    def record(self, methylation_state: dict[str, float], metadata: dict[str, Any] | None = None) -> int:
+    def record(
+        self, methylation_state: dict[str, float], metadata: dict[str, Any] | None = None
+    ) -> int:
         entry = {
             "methylation": copy.deepcopy(methylation_state),
             "generation": len(self._generations),
@@ -57,7 +59,7 @@ class EpigeneticMemory:
         if not self._generations:
             return {f"M_{c}": 0.0 for c in CREP_COMPONENTS}
         keys = [f"M_{c}" for c in CREP_COMPONENTS]
-        totals = {k: 0.0 for k in keys}
+        totals = dict.fromkeys(keys, 0.0)
         for gen in self._generations:
             m = gen["methylation"]
             for k in keys:
