@@ -24,15 +24,15 @@ class EpigeneticMemory:
     def record(
         self, methylation_state: dict[str, float], metadata: dict[str, Any] | None = None
     ) -> int:
-        entry = {
+        generation = len(self._generations)
+        self._generations.append({
             "methylation": copy.deepcopy(methylation_state),
-            "generation": len(self._generations),
+            "generation": generation,
             "metadata": metadata or {},
-        }
-        self._generations.append(entry)
+        })
         if len(self._generations) > self._max_generations:
             self._generations.pop(0)
-        return entry["generation"]
+        return generation
 
     def inherit(self, parent_methylation: dict[str, float] | None = None) -> dict[str, float]:
         """

@@ -23,12 +23,13 @@ BETA_DEFAULT = 0.08    # de-methylation enhancement rate (low entropy)
 # Epigenetic inheritance fraction (50% from parent state)
 INHERITANCE_FRACTION = 0.50
 
-# Benchmark targets
-EPI_TARGETS = {
-    "methylation_range":           ((0.0, 1.0), 0.05),
-    "adaptation_speed_cycles":     (10, 3),
+# Benchmark targets — all tolerances are numeric to keep mypy happy.
+# yaml_mutation_valid is handled separately (boolean check, no numeric tolerance).
+EPI_TARGETS: dict[str, tuple[float, float]] = {
+    "methylation_range_lo":        (0.0,  0.0),
+    "methylation_range_hi":        (1.0,  0.0),
+    "adaptation_speed_cycles":     (10.0, 3.0),
     "memory_inheritance_pct":      (50.0, 5.0),
-    "yaml_mutation_valid":         (True, None),
     "entropy_reduction_from_epi":  (0.20, 0.05),
 }
 

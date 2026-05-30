@@ -88,7 +88,12 @@ ignore_missing_imports = true
 module = "diamond_setup.*"
 ignore_errors = true
 
+[[tool.mypy.overrides]]
+module = "yaml"
+ignore_missing_imports = true
+
 [dependency-groups]
 dev = [
     "pytest-cov>=7.0.0",
+    "types-pyyaml>=6.0.12.20260518",
 ]

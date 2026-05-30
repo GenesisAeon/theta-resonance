@@ -17,11 +17,12 @@ def run_benchmark(
     results: dict[str, Any] = {}
 
     m_vals = [v for k, v in methylation_state.items() if k.startswith("M_")]
-    in_range = all(0.0 <= v <= 1.0 for v in m_vals)
-    target_range, tol_range = EPI_TARGETS["methylation_range"]
+    lo, _ = EPI_TARGETS["methylation_range_lo"]
+    hi, _ = EPI_TARGETS["methylation_range_hi"]
+    in_range = all(lo <= v <= hi for v in m_vals)
     results["methylation_range"] = {
         "pass": in_range,
-        "target": target_range,
+        "target": (lo, hi),
         "actual": (min(m_vals, default=0.0), max(m_vals, default=0.0)),
     }
 
@@ -32,7 +33,7 @@ def run_benchmark(
         "actual": adaptation_cycles,
     }
 
-    target_inh, tol_inh = EPI_TARGETS["memory_inheritance_pct"]
+    target_inh, _ = EPI_TARGETS["memory_inheritance_pct"]
     results["memory_inheritance_pct"] = {
         "pass": True,
         "target": target_inh,

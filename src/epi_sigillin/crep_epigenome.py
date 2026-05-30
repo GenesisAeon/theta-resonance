@@ -45,8 +45,8 @@ class CREPEpigenome:
         product = 1.0
         for comp in ("C", "R", "E", "P"):
             product *= max(combined[comp], 0.0)
-        eta = product ** 0.25
-        gamma_eff = math.atanh(min(eta, 0.9999)) / CREP_COUPLING if eta > 0 else 0.0
+        eta = min(product ** 0.25, 0.9999)  # clamp before atanh; activation marks may push >1
+        gamma_eff = math.atanh(eta) / CREP_COUPLING if eta > 0 else 0.0
 
         return {
             **combined,

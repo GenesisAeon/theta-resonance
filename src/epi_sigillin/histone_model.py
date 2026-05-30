@@ -49,12 +49,13 @@ class HistoneModificationModel:
         return list(self._active_marks)
 
     def modifiers(self) -> dict[str, float]:
-        """Returns per-CREP-component multiplier (0 = fully repressed, 1 = unmodified)."""
+        """Returns per-CREP-component multiplier (<1 = repressed, >1 = activated)."""
         result = {"C": 1.0, "R": 1.0, "E": 1.0, "P": 1.0}
         for mark in HISTONE_MARKS:
             if mark.name in self._active_marks:
                 if mark.effect == "activation":
-                    result[mark.target] = min(1.0, result[mark.target] * (1 + mark.strength * 0.2))
+                    # Allow multipliers above 1.0 so low-entropy activation enhances E/C/R.
+                    result[mark.target] = min(2.0, result[mark.target] * (1 + mark.strength * 0.2))
                 else:
                     result[mark.target] = max(0.0, result[mark.target] * (1 - mark.strength * 0.5))
         return result

@@ -116,9 +116,11 @@ class EpiSigillin:
                 if k not in {"active_marks", "methylation"}
             }
 
+            # Use the UTAC H(t) value (same scale as s_optimal/s_max) so the
+            # mutator's high/low entropy branches are reachable during a cycle.
             self._mutator.mutate(
                 params={"crep": dict(self._crep_state), "utac": self._bridge.base_utac()},
-                entropy_level=entropy,
+                entropy_level=self._h,
                 s_optimal=self._s_optimal,
                 s_max=self._s_max,
             )
@@ -255,7 +257,12 @@ class EpiSigillin:
         return self._epigenome.methylation_state()
 
     def mutate_yaml(self, target_file: str, entropy_level: float) -> dict[str, Any]:
-        base = self._bridge.all_params()
+        # Load the target file's current contents so user fields are preserved;
+        # fall back to bridge defaults only when the file does not yet exist.
+        try:
+            base = RuntimeYAMLMutator.load(target_file)
+        except (FileNotFoundError, OSError):
+            base = self._bridge.all_params()
         return self._mutator.mutate(
             params=base,
             entropy_level=entropy_level,
