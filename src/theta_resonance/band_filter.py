@@ -57,6 +57,7 @@ def synthetic_eeg(
 ) -> list[float]:
     """Generate synthetic EEG dominated by the given band (for testing)."""
     import random
+
     from .constants import BAND_CENTERS
 
     rng = random.Random(seed)

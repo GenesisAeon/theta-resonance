@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from .constants import BANDS, GAMMA_BY_BAND
-
+from .constants import GAMMA_BY_BAND
 
 _STATE_RULES: list[tuple[str, dict]] = [
     # (state_name, {dominant_band, optional constraints})

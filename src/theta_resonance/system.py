@@ -4,19 +4,17 @@ from __future__ import annotations
 
 import math
 import random
-import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
-from .band_filter import bandpass_power, dominant_frequency, synthetic_eeg
+from .band_filter import bandpass_power, dominant_frequency
 from .benchmark import run_benchmark
 from .cognitive_state import CognitiveStateClassifier
 from .constants import (
-    BANDS,
     BAND_CENTERS,
+    BANDS,
     GAMMA_BY_BAND,
     PACKAGE_NUMBER,
     REFERENCE_DOI,
-    SIGMA,
     WHITEPAPER_DOI,
 )
 from .crep_bands import BandCREPMapper

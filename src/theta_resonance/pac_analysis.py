@@ -33,7 +33,7 @@ def modulation_index(
     amplitude_sum = [0.0] * n_bins
     counts = [0] * n_bins
 
-    for ph, amp in zip(phase_signal, amplitude_signal):
+    for ph, amp in zip(phase_signal, amplitude_signal, strict=False):
         idx = int((ph % (2 * math.pi)) / bin_size) % n_bins
         amplitude_sum[idx] += amp
         counts[idx] += 1

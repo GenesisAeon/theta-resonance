@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import math
 
-from .constants import BANDS, BAND_CENTERS, GAMMA_BY_BAND, SIGMA
+from .constants import BAND_CENTERS, BANDS, GAMMA_BY_BAND, SIGMA
 
 
 class BandCREPMapper:
