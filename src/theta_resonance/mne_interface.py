@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 
 class MNEInterface:
@@ -25,7 +26,7 @@ class MNEInterface:
         except ImportError:
             return False
 
-    def load(self, duration_s: float = 60.0, fs: float = 256.0) -> dict:
+    def load(self, duration_s: float = 60.0, fs: float = 256.0) -> dict[str, Any]:
         """
         Return dict with keys: signal (list[float]), fs, source, duration_s.
 
@@ -35,15 +36,15 @@ class MNEInterface:
             return self._load_mne(duration_s)
         return self._load_synthetic(duration_s, fs)
 
-    def _load_mne(self, duration_s: float) -> dict:
-        import mne  # type: ignore[import]
+    def _load_mne(self, duration_s: float) -> dict[str, Any]:
+        import mne
         raw = mne.io.read_raw_edf(str(self.edf_path), preload=True, verbose=False)
         fs = raw.info["sfreq"]
         n = int(duration_s * fs)
         data = raw.get_data()[0, :n].tolist()
         return {"signal": data, "fs": fs, "source": str(self.edf_path), "duration_s": duration_s}
 
-    def _load_synthetic(self, duration_s: float, fs: float) -> dict:
+    def _load_synthetic(self, duration_s: float, fs: float) -> dict[str, Any]:
         from .band_filter import synthetic_eeg
         signal = synthetic_eeg(duration_s=duration_s, fs=fs, dominant_band="theta")
         return {"signal": signal, "fs": fs, "source": "synthetic", "duration_s": duration_s}

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+from typing import Any
 
 from .constants import BAND_CENTERS, BANDS, GAMMA_BY_BAND, SIGMA
 
@@ -31,7 +32,7 @@ class BandCREPMapper:
         pac_mi: float = 0.05,
         plv: float = 0.70,
         perm_entropy: float = 0.75,
-    ) -> dict:
+    ) -> dict[str, Any]:
         """Return CREP state dict for given EEG features."""
         C = float(min(1.0, max(0.0, pac_mi / 0.15)))          # MI → [0,1]
         R = self._resonance(dominant_hz)

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from .constants import GAMMA_BY_BAND
 
 
@@ -27,7 +29,7 @@ class FlowStateDetector:
         self.alpha_threshold = alpha_threshold
         self.gamma_threshold = gamma_threshold
 
-    def detect(self, band_powers: dict[str, float]) -> dict:
+    def detect(self, band_powers: dict[str, float]) -> dict[str, Any]:
         """
         Parameters
         ----------

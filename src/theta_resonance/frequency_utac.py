@@ -51,7 +51,7 @@ class FrequencyUTAC:
         self._t += dt
         return self.H
 
-    def utac_state(self) -> dict:
+    def utac_state(self) -> dict[str, float]:
         return {
             "H": round(self.H, 4),
             "dH_dt": round(self._dH_dt, 6),

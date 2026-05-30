@@ -5,6 +5,7 @@ from __future__ import annotations
 import math
 import random
 from dataclasses import dataclass
+from typing import Any
 
 from .band_filter import bandpass_power, dominant_frequency
 from .benchmark import run_benchmark
@@ -66,13 +67,13 @@ class ThetaResonance:
         self._flow_detector = FlowStateDetector()
         self._classifier = CognitiveStateClassifier()
         self._phase_events: list[PhaseEvent] = []
-        self._crep_state: dict = {}
-        self._cognitive_state: dict = {}
+        self._crep_state: dict[str, Any] = {}
+        self._cognitive_state: dict[str, Any] = {}
         self._t_total = 0.0
 
     # ── Diamond interface ──────────────────────────────────────────────────────
 
-    def run_cycle(self, duration_seconds: float = 300.0) -> dict:
+    def run_cycle(self, duration_seconds: float = 300.0) -> dict[str, Any]:
         """
         Simulate `duration_seconds` of EEG processing.
 
@@ -82,8 +83,8 @@ class ThetaResonance:
         Returns a summary dict with final CREP, UTAC, and phase events.
         """
         eeg_data = self._loader.load(duration_s=duration_seconds)
-        signal: list[float] = eeg_data["signal"]
-        fs: float = eeg_data["fs"]
+        signal: list[float] = list(eeg_data["signal"])
+        fs: float = float(eeg_data["fs"])
         dt = 0.5  # UTAC step in seconds
         n_steps = int(duration_seconds / dt)
 
@@ -105,7 +106,7 @@ class ThetaResonance:
             crep = self._crep_mapper.compute(dom_hz, pac_mi, plv, perm_e)
             self._crep_state = crep
             self._utac.H_star = dom_hz
-            self._utac.step(gamma=crep["Gamma"], dt=dt)
+            self._utac.step(gamma=float(crep["Gamma"]), dt=dt)
 
             cog = self._classifier.classify(band_powers)
             self._cognitive_state = cog
@@ -115,14 +116,14 @@ class ThetaResonance:
                     PhaseEvent(
                         t=round(self._t_total + t_offset, 2),
                         from_state=prev_state,
-                        to_state=cog["state"],
+                        to_state=str(cog["state"]),
                         gamma_before=prev_gamma,
-                        gamma_after=crep["Gamma"],
+                        gamma_after=float(crep["Gamma"]),
                         description=f"{prev_state} → {cog['state']} @ {dom_hz:.1f} Hz",
                     )
                 )
-            prev_state = cog["state"]
-            prev_gamma = crep["Gamma"]
+            prev_state = str(cog["state"])
+            prev_gamma = float(crep["Gamma"])
 
         self._t_total += duration_seconds
         benchmark = run_benchmark(self._crep_state, self._utac.utac_state())
@@ -139,15 +140,15 @@ class ThetaResonance:
             "duration_s": duration_seconds,
         }
 
-    def get_crep_state(self) -> dict:
+    def get_crep_state(self) -> dict[str, Any]:
         return dict(self._crep_state) if self._crep_state else {
             "C": 0.0, "R": 0.0, "E": 0.0, "P": 0.0, "Gamma": 0.0,
         }
 
-    def get_utac_state(self) -> dict:
+    def get_utac_state(self) -> dict[str, float]:
         return self._utac.utac_state()
 
-    def get_phase_events(self) -> list:
+    def get_phase_events(self) -> list[dict[str, Any]]:
         return [
             {
                 "t": e.t,
@@ -160,7 +161,7 @@ class ThetaResonance:
             for e in self._phase_events
         ]
 
-    def to_zenodo_record(self) -> dict:
+    def to_zenodo_record(self) -> dict[str, Any]:
         return {
             "title": "theta-resonance: Brain Oscillation Bands as CREP Modulators",
             "description": (
@@ -208,12 +209,13 @@ class ThetaResonance:
     def detect_flow_state(self) -> bool:
         if not self._cognitive_state:
             return False
-        rel = self._cognitive_state.get("relative_powers", {})
+        rel: dict[str, float] = self._cognitive_state.get("relative_powers", {})
         result = self._flow_detector.detect(rel)
         return bool(result["is_flow"])
 
     def current_band(self) -> str:
-        return self._cognitive_state.get("dominant_band", "theta")
+        val = self._cognitive_state.get("dominant_band", "theta")
+        return str(val)
 
     def gamma_for_band(self, band: str) -> float:
         return self._crep_mapper.gamma_for_band(band)

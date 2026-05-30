@@ -2,16 +2,18 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from .constants import BANDS, GAMMA_BY_BAND, THETA_TARGETS
 
 
-def run_benchmark(crep_state: dict, utac_state: dict) -> dict:
+def run_benchmark(crep_state: dict[str, Any], utac_state: dict[str, Any]) -> dict[str, Any]:
     """
     Compare a ThetaResonance result dict against THETA_TARGETS.
 
     Returns per-target pass/fail and an overall pass boolean.
     """
-    results: dict[str, dict] = {}
+    results: dict[str, dict[str, Any]] = {}
 
     # theta_band_hz: check dominant_hz is within theta range
     lo, hi = BANDS["theta"]
@@ -34,12 +36,13 @@ def run_benchmark(crep_state: dict, utac_state: dict) -> dict:
 
     # gamma_gamma_band: canonical gamma-band Γ
     g_gamma = GAMMA_BY_BAND["gamma"]
-    tg, tol = THETA_TARGETS["gamma_gamma_band"]
+    tg_raw, tol_raw = THETA_TARGETS["gamma_gamma_band"]
+    tg2, tol2 = float(tg_raw), float(tol_raw)  # type: ignore[arg-type]
     results["gamma_gamma_band"] = {
-        "target": tg,
-        "tolerance": tol,
+        "target": tg2,
+        "tolerance": tol2,
         "value": g_gamma,
-        "pass": abs(g_gamma - tg) <= tol,
+        "pass": abs(g_gamma - tg2) <= tol2,
     }
 
     passed = sum(1 for v in results.values() if v["pass"])

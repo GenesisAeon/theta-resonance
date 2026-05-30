@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from .constants import GAMMA_BY_BAND
 
-_STATE_RULES: list[tuple[str, dict]] = [
+_STATE_RULES: list[tuple[str, dict[str, Any]]] = [
     # (state_name, {dominant_band, optional constraints})
     ("deep_sleep",  {"dominant": "delta"}),
     ("flow",        {"dominant": "theta", "alpha_relative": (0.0, 0.4)}),
@@ -22,7 +24,7 @@ class CognitiveStateClassifier:
     Each maps to a CREP Γ value (canonical from Hengen & Shew 2025).
     """
 
-    def classify(self, band_powers: dict[str, float]) -> dict:
+    def classify(self, band_powers: dict[str, float]) -> dict[str, Any]:
         """
         Parameters
         ----------

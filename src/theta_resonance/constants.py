@@ -31,7 +31,7 @@ GAMMA_BY_BAND: dict[str, float] = {
 }
 
 # ── Benchmark targets ─────────────────────────────────────────────────────────
-THETA_TARGETS: dict[str, tuple] = {
+THETA_TARGETS: dict[str, tuple[object, ...]] = {
     "theta_band_hz":      ((4.0, 8.0), 0.5),
     "gamma_theta_utac":   (0.25,       0.02),
     "gamma_gamma_band":   (0.75,       0.05),
