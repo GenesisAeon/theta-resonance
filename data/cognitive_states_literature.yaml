@@ -1,0 +1,50 @@
+---
+# Cognitive state → EEG band signature literature mapping
+# Sources: Hengen & Shew 2025; Buzsáki 2006 Rhythms of the Brain;
+#          Frontiers Comp. Neurosci. 2026 (DOI: 10.3389/fncom.2026.1744991)
+
+cognitive_states:
+  flow:
+    dominant_band: theta
+    theta_power_relative: ">0.30"
+    alpha_power_relative: "<0.35"
+    gamma_power_relative: "<0.25"
+    pac_mi: ">0.04"         # theta-gamma PAC (Tort 2010)
+    gamma_crep: 0.251
+    reference: "Hengen & Shew 2025 — criticality as cognitive setpoint"
+
+  deep_sleep:
+    dominant_band: delta
+    theta_power_relative: "<0.20"
+    gamma_crep: 0.05
+
+  relaxed:
+    dominant_band: alpha
+    eyes_closed: true
+    gamma_crep: 0.35
+
+  active_cognition:
+    dominant_band: beta
+    task: working_memory
+    gamma_crep: 0.55
+
+  arousal_error_correction:
+    dominant_band: gamma
+    gamma_crep: 0.75
+    note: "High gamma = fast error-correction mode per Gemini cognitive-pacing framework"
+
+benchmark_targets:
+  gamma_theta_utac:
+    value: 0.25
+    tolerance: 0.02
+    note: "Triple universality with AMOC and neural criticality"
+  gamma_gamma_band:
+    value: 0.75
+    tolerance: 0.05
+  pac_mi_flow_state:
+    value: 0.05
+    tolerance: 0.02
+  flow_detection_accuracy:
+    value: 0.80
+    tolerance: 0.05
+    reference: "vs. subjective flow reports"

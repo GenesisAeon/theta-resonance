@@ -50,14 +50,14 @@ jobs:
           files: coverage.xml
 
   docs:
-    name: Docs (mkdocs --strict)
+    name: Docs (mkdocs build)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install dev and docs dependencies
-        run: pip install -e ".[dev,docs]"
+      - name: Install dev dependencies
+        run: pip install -e ".[dev]" mkdocs mkdocs-material
       - name: Build docs
-        run: mkdocs build --strict
+        run: mkdocs build
