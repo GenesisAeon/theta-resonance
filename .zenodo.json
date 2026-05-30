@@ -1,7 +1,7 @@
 {
-  "title": "theta-resonance: Brain Oscillation Bands as CREP Modulators (GenesisAeon Package 27)",
-  "description": "Package 27 of the GenesisAeon Entropy Atlas. Models EEG frequency bands (delta/theta/alpha/beta/gamma) as CREP modulation channels within the Unified Threshold Activation Criticality (UTAC) framework. Confirms Γ_theta ≈ 0.251 = Γ_AMOC = Γ_neural_criticality — the triple homeostatic universality prediction. Implements the Diamond-Template contract (run_cycle / get_crep_state / get_utac_state / get_phase_events / to_zenodo_record). Reference: Hengen & Shew (2025). Is criticality a unified setpoint of brain function? Neuron 113(16), 2582-2598. DOI: 10.1016/j.neuron.2025.05.020",
-  "version": "0.1.0",
+  "title": "theta-resonance + epi-sigillin: Brain Oscillation Bands & Epigenetic Runtime Parameter Mutation (GenesisAeon Packages 27+28)",
+  "description": "Packages 27 and 28 of the GenesisAeon Entropy Atlas. Package 27 (theta-resonance): models EEG frequency bands (delta/theta/alpha/beta/gamma) as CREP modulation channels within the Unified Threshold Activation Criticality (UTAC) framework. Confirms Γ_theta ≈ 0.251 = Γ_AMOC = Γ_neural_criticality — the triple homeostatic universality prediction. Package 28 (epi-sigillin): implements epigenetic mutation of UTAC/CREP parameters during runtime. Analogous to DNA methylation and histone modification, the system entropy level rewrites CREP-YAML parameter files at runtime — high entropy epochs methylate (suppress) CREP-P, low entropy epochs de-methylate (activate) CREP-E. Includes CREPMethylationEngine, HistoneModificationModel, RuntimeYAMLMutator, EpigeneticMemory, and full Diamond-Template contract. Both packages implement: run_cycle / get_crep_state / get_utac_state / get_phase_events / to_zenodo_record. References: Hengen & Shew (2025) Neuron 113(16) DOI:10.1016/j.neuron.2025.05.020; Greenberg & Bourc'his (2019) Nat. Rev. Mol. Cell Biol. 20, 590-607 DOI:10.1038/s41580-019-0160-9.",
+  "version": "0.2.0",
   "upload_type": "software",
   "access_right": "open",
   "license": "MIT",
@@ -26,7 +26,14 @@
     "neural criticality",
     "phase-amplitude coupling",
     "brain oscillations",
-    "self-organized criticality"
+    "self-organized criticality",
+    "epigenetics",
+    "DNA methylation",
+    "histone modification",
+    "runtime parameter mutation",
+    "adaptive systems",
+    "epi-sigillin",
+    "epigenetic runtime"
   ],
   "related_identifiers": [
     {
@@ -38,6 +45,18 @@
     {
       "relation": "isSupplementTo",
       "identifier": "https://doi.org/10.1016/j.neuron.2025.05.020",
+      "resource_type": "publication-article",
+      "scheme": "url"
+    },
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://doi.org/10.1038/s41580-019-0160-9",
+      "resource_type": "publication-article",
+      "scheme": "url"
+    },
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://doi.org/10.1038/s41576-016-0028-x",
       "resource_type": "publication-article",
       "scheme": "url"
     },

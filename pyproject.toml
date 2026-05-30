@@ -1,7 +1,7 @@
 [project]
 name = "theta-resonance"
-version = "0.1.0"
-description = "Brain Oscillation Bands as CREP Modulators — GenesisAeon Package 27"
+version = "0.2.0"
+description = "GenesisAeon Packages 27+28 — Brain Oscillation Bands (theta-resonance) & Epigenetic Runtime Parameter Mutation (epi-sigillin)"
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "Johann Römer", email = "joberoemer@gmail.com" }]
@@ -17,6 +17,11 @@ keywords = [
     "entropy atlas",
     "flow state",
     "neural criticality",
+    "epigenetics",
+    "DNA methylation",
+    "histone modification",
+    "runtime parameter mutation",
+    "adaptive systems",
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -54,7 +59,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/theta_resonance"]
+packages = ["src/theta_resonance", "src/epi_sigillin"]
 
 [tool.ruff]
 line-length = 100
@@ -68,7 +73,7 @@ select = ["E", "F", "B", "I", "W", "UP", "C4", "SIM"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts   = "--cov=theta_resonance --cov-report=term-missing -v"
+addopts   = "--cov=theta_resonance --cov=epi_sigillin --cov-report=term-missing -v"
 
 [tool.coverage.run]
 source = ["src"]
@@ -82,3 +87,8 @@ ignore_missing_imports = true
 [[tool.mypy.overrides]]
 module = "diamond_setup.*"
 ignore_errors = true
+
+[dependency-groups]
+dev = [
+    "pytest-cov>=7.0.0",
+]
