@@ -1,6 +1,6 @@
 [project]
 name = "theta-resonance"
-version = "0.4.0"
+version = "1.0.0"
 description = "GenesisAeon Packages 27–30 — Brain Oscillation Bands (theta-resonance), Epigenetic Runtime Parameter Mutation (epi-sigillin), Proof-of-Resonance Distributed Consensus (hikari-ledger) & Entropy-Minimizing Network Routing (diffusive-routing)"
 readme = "README.md"
 license = { text = "MIT" }
@@ -35,7 +35,7 @@ keywords = [
     "information geometry",
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",

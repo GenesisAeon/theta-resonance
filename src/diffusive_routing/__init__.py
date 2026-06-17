@@ -4,5 +4,5 @@ from __future__ import annotations
 
 from .system import DiffusiveRouting
 
-__version__ = "0.4.0"
+__version__ = "1.0.0"
 __all__ = ["DiffusiveRouting"]

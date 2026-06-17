@@ -249,7 +249,7 @@ class DiffusiveRouting:
                 "References: Turing (1952); Bianconi (2021); "
                 "Gemini-2026-GenesisAeon-Assessment."
             ),
-            "version": "0.4.0",
+            "version": "1.0.0",
             "upload_type": "software",
             "creators": [{"name": "Römer, Johann", "affiliation": "MOR Research Collective"}],
             "keywords": [
