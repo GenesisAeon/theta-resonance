@@ -388,7 +388,7 @@ Gemini (2026). GenesisAeon Assessment — Diffusive Routing & S_A/S_V Entropy Du
   author    = {Römer, Johann},
   title     = {{theta-resonance + epi-sigillin + hikari-ledger + diffusive-routing: GenesisAeon Packages 27--30}},
   year      = {2026},
-  version   = {0.4.0},
+  version   = {1.0.0},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.19645351},
   url       = {https://doi.org/10.5281/zenodo.19645351}
