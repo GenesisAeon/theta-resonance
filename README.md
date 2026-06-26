@@ -9,7 +9,8 @@
 [![Reference P28](https://img.shields.io/badge/NatRevMCB%202019-Greenberg%20%26%20Bourc'his-green)](https://doi.org/10.1038/s41580-019-0160-9)
 [![Reference P30](https://img.shields.io/badge/Turing%201952-Reaction--Diffusion-green)](https://doi.org/10.1098/rstb.1952.0012)
 [![PyPI](https://img.shields.io/pypi/v/theta-resonance)](https://pypi.org/project/theta-resonance/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: GPLv3+](https://img.shields.io/badge/Code%20License-GPLv3--or--later-blue.svg)](LICENSE)
+[![Docs License: CC BY 4.0](https://img.shields.io/badge/Docs%20License-CC%20BY%204.0-lightgrey.svg)](LICENSE-DOCS.md)
 [![CI](https://github.com/GenesisAeon/theta-resonance/actions/workflows/ci.yml/badge.svg)](https://github.com/GenesisAeon/theta-resonance/actions/workflows/ci.yml)
 
 **GenesisAeon Entropy Atlas — Packages 27, 28, 29 & 30**
