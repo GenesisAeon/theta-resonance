@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "theta-resonance"
+version: "1.0.0"
+date-released: "2026-06-17"
+authors:
+  - family-names: Römer
+    given-names: Johann
+    email: joberoemer@gmail.com
+repository-code: "https://github.com/GenesisAeon/theta-resonance"
+license: GPL-3.0-or-later
+abstract: "GenesisAeon Packages 27–30 — Brain Oscillation Bands (theta-resonance), Epigenetic Runtime Parameter Mutation (epi-sigillin), Proof-of-Resonance Distributed Consensus (hikari-ledger) & Entropy-Minimizing Network Routing (diffusive-routing)"
+keywords:
+  - GenesisAeon
+  - UTAC
+  - CREP
+  - open-science
+  - theta oscillations
+  - criticality
+  - EEG
+  - cognitive neuroscience
