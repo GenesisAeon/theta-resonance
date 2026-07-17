@@ -46,6 +46,7 @@ classifiers = [
 ]
 dependencies = [
     "pyyaml>=6.0",
+    "diamond-setup>=2.2.0",
 ]
 
 [project.optional-dependencies]
