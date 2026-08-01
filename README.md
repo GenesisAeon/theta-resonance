@@ -5,6 +5,7 @@
 [![Package 29](https://img.shields.io/badge/GenesisAeon-Package%2029-orange)](https://github.com/GenesisAeon/theta-resonance)
 [![Package 30](https://img.shields.io/badge/GenesisAeon-Package%2030-teal)](https://github.com/GenesisAeon/theta-resonance)
 [![Whitepaper](https://img.shields.io/badge/Whitepaper-10.5281%2Fzenodo.19645351-blue)](https://doi.org/10.5281/zenodo.19645351)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20934398.svg)](https://doi.org/10.5281/zenodo.20934398)
 [![Reference P27](https://img.shields.io/badge/Neuron%202025-Hengen%20%26%20Shew-green)](https://doi.org/10.1016/j.neuron.2025.05.020)
 [![Reference P28](https://img.shields.io/badge/NatRevMCB%202019-Greenberg%20%26%20Bourc'his-green)](https://doi.org/10.1038/s41580-019-0160-9)
 [![Reference P30](https://img.shields.io/badge/Turing%201952-Reaction--Diffusion-green)](https://doi.org/10.1098/rstb.1952.0012)
@@ -391,8 +392,8 @@ Gemini (2026). GenesisAeon Assessment — Diffusive Routing & S_A/S_V Entropy Du
   year      = {2026},
   version   = {1.0.0},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.19645351},
-  url       = {https://doi.org/10.5281/zenodo.19645351}
+  doi       = {10.5281/zenodo.20934398},
+  url       = {https://doi.org/10.5281/zenodo.20934398}
 }
 ```
 

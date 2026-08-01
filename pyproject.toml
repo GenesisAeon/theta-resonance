@@ -63,7 +63,7 @@ dev = [
 Homepage    = "https://github.com/GenesisAeon/theta-resonance"
 Repository  = "https://github.com/GenesisAeon/theta-resonance"
 Issues      = "https://github.com/GenesisAeon/theta-resonance/issues"
-Zenodo      = "https://doi.org/10.5281/zenodo.19645351"
+Zenodo      = "https://doi.org/10.5281/zenodo.20934398"
 Whitepaper  = "https://doi.org/10.5281/zenodo.19645351"
 
 [build-system]
